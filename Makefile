@@ -1,6 +1,6 @@
 CC=clang
 CFLAGS=-Wall -Wextra -g -c -Wno-format-security
-EXEC=callStack callStackFixed memLeak
+EXEC=callStack memLeak
 
 all: ${EXEC}
 
@@ -9,9 +9,6 @@ user.o: user.c user.h
 
 callStack.o: callStack.c
 		${CC} ${CFLAGS} callStack.c -o $@
-
-callStackFixed.o: callStackFixed.c
-		${CC} ${CFLAGS} callStackFixed.c -o $@
 
 memLeak.o: memLeak.c
 		${CC} ${CFLAGS} memLeak.c -o $@
