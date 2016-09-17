@@ -41,16 +41,23 @@ int main(int argc, char **argv)
     (void)argv;
 
     User_T user = createUser(21, "test user name");
+
+    // call some other function just to make sure that we have created and destroyed another stack frame
     int t = otherFunction(100);
     fprintf(stdout, "Main computed t (can ignore this): %d\n", t);
+
+
     if (User_hasReadPermissionLevel(user, STANDARD))
     {
         fprintf(stderr, "User has STANDARD read permissions in main\n");
     }
     else
     {
+        // on MY computer at least, the user suddenly does NOT have standard read permissions. Your results may vary
         fprintf(stderr, "User does not have STANDARD read permissions in main\n");
     }
+
+    // why does this line produce at least two valgrind errors, about invalid frees?
     User_free(&user);
     return 0;
 }
