@@ -1,7 +1,9 @@
 #include <string.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include "user.h"
 
+static bool hasSeededRand = false;
 static const bool isDemonstration = true;
 /* what happens when isDemonstration set to true:
  *
@@ -14,12 +16,19 @@ struct User_T {
     char *name;
     UserPermissions userPermissions;
     time_t created;
+    int userId;
 };
 
 typedef struct User_T *User_T;
 
 User_T User_new(int age, char *name, UserPermissions permissions)
 {
+    if (!hasSeededRand)
+    {
+        srand(time(0));
+        hasSeededRand = true;
+    }
+
     User_T newUser = malloc(sizeof(struct User_T));
 
     char *userName = NULL;
@@ -54,6 +63,9 @@ User_T User_new(int age, char *name, UserPermissions permissions)
 
     // get the current system time
     newUser->created = time(0);
+
+    // give them a random ID
+    newUser->userId = rand();
     return newUser;
 }
 
