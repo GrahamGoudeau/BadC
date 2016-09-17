@@ -10,3 +10,5 @@ user.o: user.c user.h
 
 main.o: main.c
 		${CC} ${CFLAGS} main.c -o main.o
+clean:
+		rm *.o ${EXEC_NAME}
