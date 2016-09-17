@@ -1,6 +1,6 @@
 CC=clang
-CFLAGS=-Wall -Wextra -g -c -Wno-format-security
-EXEC=callStack memLeak doubleFree
+CFLAGS=-Wall -Wextra -g -c -Wno-format-security -Wno-uninitialized
+EXEC=callStack memLeak doubleFree passByRef pointerInit
 CPPFILE=afterPreprocessor.c
 
 all: ${EXEC}
@@ -17,6 +17,12 @@ memLeak.o: memLeak.c
 doubleFree.o: doubleFree.c
 		${CC} ${CFLAGS} doubleFree.c -o $@
 
+pointerInit.o: pointerInit.c
+		${CC} ${CFLAGS} pointerInit.c -o $@
+
+passByRef.o: passByRef.c
+		${CC} ${CFLAGS} passByRef.c -o $@
+
 callStackFixed: user.o callStackFixed.o
 		${CC} user.o callStackFixed.o -o $@
 
@@ -28,6 +34,12 @@ memLeak: user.o memLeak.o
 
 doubleFree: user.o doubleFree.o
 		${CC} user.o doubleFree.o -o $@
+
+passByRef: user.o passByRef.o
+		${CC} user.o passByRef.o -o $@
+
+pointerInit: user.o pointerInit.o
+		${CC} user.o pointerInit.o -o $@
 
 syntax: user.h
 		${CC} -E user.h >${CPPFILE}
