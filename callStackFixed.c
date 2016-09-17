@@ -13,7 +13,6 @@ User_T createUser(int userAge, char *userName)
     userPermissions->readPermission = STANDARD;
     userPermissions->writePermission = STANDARD;
 
-    // use it to create a new user - why is this line (and the above three lines) wrong?
     User_T user = User_new(userAge, userName, userPermissions);
 
     if (User_hasReadPermissionLevel(user, STANDARD))
@@ -58,11 +57,10 @@ int main(int argc, char **argv)
     }
     else
     {
-        // on MY computer at least, the user suddenly does NOT have standard read permissions. Your results may vary
         fprintf(stderr, "User does not have STANDARD read permissions in main\n");
     }
 
-    // why does this line produce at least two valgrind errors, about invalid frees?
+    // why is it fine to pass &user here, whereas it was wrong to use an ampersand in ./callStack?
     User_free(&user);
     return 0;
 }
