@@ -29,6 +29,9 @@ typedef struct UserPermissions {
 } *UserPermissions;
 
 
+// construct a new user with userAge = -1, userName = NULL, permissions = NULL
+T User_newDefault();
+
 // construct a new user with the given age, name, and permission levels
 T User_new(int userAge, char *userName, UserPermissions permissions);
 

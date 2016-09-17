@@ -105,3 +105,8 @@ bool User_hasWritePermissionLevel(User_T user, enum Permission level)
 {
     return user->userPermissions->writePermission == level;
 }
+
+User_T User_newDefault()
+{
+    return User_new(-1, NULL, NULL);
+}
