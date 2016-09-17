@@ -1,6 +1,7 @@
 CC=clang
 CFLAGS=-Wall -Wextra -g -c -Wno-format-security
 EXEC=callStack memLeak
+CPPFILE=afterPreprocessor.c
 
 all: ${EXEC}
 
@@ -23,7 +24,7 @@ memLeak: user.o memLeak.o
 		${CC} user.o memLeak.o -o $@
 
 syntax: user.h
-		${CC} -E user.h >afterPreprocessor.c
+		${CC} -E user.h >${CPPFILE}
 
 clean:
 		rm *.o ${EXEC}
