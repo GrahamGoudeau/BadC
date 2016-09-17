@@ -1,6 +1,6 @@
 CC=clang
 CFLAGS=-Wall -Wextra -g -c -Wno-format-security
-EXEC=callStack memLeak
+EXEC=callStack memLeak doubleFree
 CPPFILE=afterPreprocessor.c
 
 all: ${EXEC}
@@ -14,6 +14,9 @@ callStack.o: callStack.c
 memLeak.o: memLeak.c
 		${CC} ${CFLAGS} memLeak.c -o $@
 
+doubleFree.o: doubleFree.c
+		${CC} ${CFLAGS} doubleFree.c -o $@
+
 callStackFixed: user.o callStackFixed.o
 		${CC} user.o callStackFixed.o -o $@
 
@@ -22,6 +25,9 @@ callStack: user.o callStack.o
 
 memLeak: user.o memLeak.o
 		${CC} user.o memLeak.o -o $@
+
+doubleFree: user.o doubleFree.o
+		${CC} user.o doubleFree.o -o $@
 
 syntax: user.h
 		${CC} -E user.h >${CPPFILE}
