@@ -29,4 +29,4 @@ syntax: user.h
 		${CC} -E user.h >afterPreprocessor.c
 
 clean:
-		rm *.o ${EXEC_NAME} ${EXEC}
+		rm *.o ${EXEC}
