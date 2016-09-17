@@ -30,7 +30,7 @@ typedef struct UserPermissions {
 
 
 // construct a new user with the given age, name, and permission levels
-T User_new(int age, char *name, UserPermissions permissions);
+T User_new(int userAge, char *userName, UserPermissions permissions);
 
 // check whether the user has certain permissions
 bool User_hasReadPermissionLevel(T user, enum Permission permissionLevel);
