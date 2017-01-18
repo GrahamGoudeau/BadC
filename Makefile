@@ -1,10 +1,26 @@
+# It is not necessary to use the Makefile rules that end in .o
+# You should use the names that follow those rules, so an example
+# make invocation could be `make callStack` or `make doubleFree`.
+# Alternatively, you can just type `make` to build every executable.
+
+# All executables should be able to run through valgrind with no
+# errors reported.
+
+# You may also run `make syntax` to see what a .c file looks like
+# after the pre-processor has been run on it. The relevant content
+# is at the bottom of the file. It gets dumped in afterPreprocessor.c
+
 CC=clang
 CFLAGS=-Wall -Wextra -g -c -Wno-format-security -Wno-uninitialized
+
+# the full list of executables that will be built
 EXEC=callStack memLeak doubleFree passByRef pointerInit
+
 CPPFILE=afterPreprocessor.c
 
 all: ${EXEC}
 
+# not necessary to use rules that end in .o
 user.o: user.c user.h
 		${CC} ${CFLAGS} user.c -o user.o
 
@@ -23,9 +39,9 @@ pointerInit.o: pointerInit.c
 passByRef.o: passByRef.c
 		${CC} ${CFLAGS} passByRef.c -o $@
 
-callStackFixed: user.o callStackFixed.o
-		${CC} user.o callStackFixed.o -o $@
-
+#########
+# Use these as your Makefile options
+#########
 callStack: user.o callStack.o
 		${CC} user.o callStack.o -o $@
 
@@ -45,4 +61,4 @@ syntax: user.h
 		${CC} -E user.h >${CPPFILE}
 
 clean:
-		rm *.o ${EXEC}
+		rm *.o ${EXEC} ${CPPFILE}
