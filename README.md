@@ -1,10 +1,6 @@
 # Bad C
 Examples of how NOT to write C, with plenty of comments along the way to explain why.
 
-<p align="center">
-  <img src="http://s2.quickmeme.com/img/1e/1e1000da2fe49b5f5672321ec846b82de9bc71240a06294f098e370f534b3b35.jpg"/>
-</p>
-
 ## How to use this repo
 The examples in this repo are based around the idea of modeling a "User".  This could be a User of a website, of a computer, etc.
 
