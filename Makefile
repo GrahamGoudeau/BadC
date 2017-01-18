@@ -6,17 +6,11 @@
 # All executables should be able to run through valgrind with no
 # errors reported.
 
-# You may also run `make syntax` to see what a .c file looks like
-# after the pre-processor has been run on it. The relevant content
-# is at the bottom of the file. It gets dumped in afterPreprocessor.c
-
 CC=clang
 CFLAGS=-Wall -Wextra -g -c -Wno-format-security -Wno-uninitialized
 
 # the full list of executables that will be built
 EXEC=callStack memLeak doubleFree passByRef pointerInit
-
-CPPFILE=afterPreprocessor.c
 
 all: ${EXEC}
 
@@ -57,8 +51,5 @@ passByRef: user.o passByRef.o
 pointerInit: user.o pointerInit.o
 		${CC} user.o pointerInit.o -o $@
 
-syntax: user.h
-		${CC} -E user.h >${CPPFILE}
-
 clean:
-		rm *.o ${EXEC} ${CPPFILE}
+		rm *.o ${EXEC}
