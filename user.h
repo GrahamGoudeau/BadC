@@ -41,6 +41,7 @@ bool User_hasWritePermissionLevel(T user, enum Permission permissionLevel);
 
 // get the user's name, or get a fully writable version of the user's name
 char *User_getName(T user);
+char **User_getNameWritable(T user);
 
 // frees the overall User_T object along with the name and permissions
 void User_free(T *user);
