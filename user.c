@@ -15,7 +15,6 @@ struct User_T {
     int age;
     char *name;
     UserPermissions userPermissions;
-    time_t created;
     int userId;
 };
 
@@ -61,9 +60,6 @@ User_T User_new(int age, char *name, UserPermissions permissions)
     newUser->age = age;
     newUser->userPermissions = userPermissions;
 
-    // get the current system time
-    newUser->created = time(0);
-
     // give them a random ID
     newUser->userId = rand();
     return newUser;
@@ -101,11 +97,6 @@ char **User_getNameWritable(User_T user)
      * REFERENCE to the field INSIDE the User_T struct
      */
     return &(user->name);
-}
-
-time_t User_getAccountAge(User_T user)
-{
-    return user->created;
 }
 
 bool User_hasReadPermissionLevel(User_T user, enum Permission level)
