@@ -73,6 +73,7 @@ void User_free(User_T *user)
     }
     free((*user)->userPermissions);
     free(*user);
+    *user = NULL;
 }
 
 char *User_getName(User_T user)
