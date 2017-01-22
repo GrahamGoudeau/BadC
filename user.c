@@ -7,7 +7,7 @@ static bool hasSeededRand = false;
 static const bool isDemonstration = true;
 /* what happens when isDemonstration set to true:
  *
- * User_new will use the reference to UserPermissiosn that it is given rather than make a defensive copy
+ * User_new will use the reference to UserPermissions that it is given rather than make a defensive copy
  * User_free will attempt to free the reference to the user's name
  */
 
