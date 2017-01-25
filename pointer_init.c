@@ -44,5 +44,7 @@ int main(void)
     User_T new_user = User_new(20, user_name, permissions);
 
     User_free(&new_user);
+    free(read_permission_pointer);
+    free(write_permission_pointer);
     return 0;
 }
