@@ -4,29 +4,29 @@
 #include "user.h"
 
 // create a user with "STANDARD" permissions for both read and write
-User_T createUser(int userAge, char *userName)
+User_T create_user(int user_age, char *user_name)
 {
     // declare a UserPermissions struct
-    struct UserPermissions userPermissions;
+    struct UserPermissions user_permissions;
 
     // define its initial values
-    userPermissions.readPermission = STANDARD;
-    userPermissions.writePermission = STANDARD;
+    user_permissions.read_permission = STANDARD;
+    user_permissions.write_permission = STANDARD;
 
-    User_T user = User_new(userAge, userName, &userPermissions);
+    User_T user = User_new(user_age, user_name, &user_permissions);
 
-    if (User_hasReadPermissionLevel(user, STANDARD))
+    if (User_has_read_permission_level(user, STANDARD))
     {
-        fprintf(stderr, "User has STANDARD read permissions in createUser\n");
+        fprintf(stderr, "User has STANDARD read permissions in create_user\n");
     }
     else
     {
-        fprintf(stderr, "User does not have STANDARD read permissions in createUser\n");
+        fprintf(stderr, "User does not have STANDARD read permissions in create_user\n");
     }
     return user;
 }
 
-int otherFunction(int x)
+int other_function(int x)
 {
     int y = x / 2 + x;
     fprintf(stdout, "\nUselessly computed y: %d\n", y);
@@ -39,14 +39,14 @@ int main(int argc, char **argv)
     (void)argc;
     (void)argv;
 
-    User_T user = createUser(21, "test user name");
+    User_T user = create_user(21, "test user name");
 
     // call some other function just to make sure that we have created and destroyed another stack frame
-    int t = otherFunction(100);
+    int t = other_function(100);
     fprintf(stdout, "Main computed t (can ignore this): %d\n", t);
 
 
-    if (User_hasReadPermissionLevel(user, STANDARD))
+    if (User_has_read_permission_level(user, STANDARD))
     {
         fprintf(stderr, "User has STANDARD read permissions in main\n");
     }

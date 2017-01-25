@@ -21,13 +21,13 @@ char *prompt(char *message)
     return response;
 }
 
-void freeUser(User_T user)
+void free_user(User_T user)
 {
     User_free(&user);
     user = NULL;
 }
 
-void checkToFreeUserLoop(User_T user)
+void check_to_free_user_loop(User_T user)
 {
     while (user != NULL)
     {
@@ -35,19 +35,19 @@ void checkToFreeUserLoop(User_T user)
         char *response = prompt("Ready to free user? [y\\n] ");
         if (strcmp(response, "y\n") == 0)
         {
-            freeUser(user);
+            free_user(user);
         }
     }
 }
 
 int main(void)
 {
-    char *userName = prompt("User name: ");
+    char *user_name = prompt("User name: ");
 
     UserPermissions permissions = malloc(sizeof(struct UserPermissions));
-    User_T newUser = User_new(20, userName, permissions);
-    checkToFreeUserLoop(newUser);
+    User_T new_user = User_new(20, user_name, permissions);
+    check_to_free_user_loop(new_user);
 
-    User_free(&newUser);
+    User_free(&new_user);
     return 0;
 }

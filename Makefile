@@ -1,6 +1,6 @@
 # It is not necessary to use the Makefile rules that end in .o
 # You should use the names that follow those rules, so an example
-# make invocation could be `make callStack` or `make doubleFree`.
+# make invocation could be `make call_stack` or `make double_free`.
 # Alternatively, you can just type `make` to build every executable.
 
 # All executables should be able to run through valgrind with no
@@ -10,7 +10,7 @@ CC=clang
 CFLAGS=-Wall -Wextra -g -c -Wno-format-security -Wno-uninitialized
 
 # the full list of executables that will be built
-EXEC=callStack memLeak doubleFree passByRef pointerInit
+EXEC=call_stack mem_leak double_free pass_by_ref pointer_init
 
 all: ${EXEC}
 
@@ -18,38 +18,38 @@ all: ${EXEC}
 user.o: user.c user.h
 		${CC} ${CFLAGS} user.c -o user.o
 
-callStack.o: callStack.c
-		${CC} ${CFLAGS} callStack.c -o $@
+call_stack.o: call_stack.c
+		${CC} ${CFLAGS} call_stack.c -o $@
 
-memLeak.o: memLeak.c
-		${CC} ${CFLAGS} memLeak.c -o $@
+mem_leak.o: mem_leak.c
+		${CC} ${CFLAGS} mem_leak.c -o $@
 
-doubleFree.o: doubleFree.c
-		${CC} ${CFLAGS} doubleFree.c -o $@
+double_free.o: double_free.c
+		${CC} ${CFLAGS} double_free.c -o $@
 
-pointerInit.o: pointerInit.c
-		${CC} ${CFLAGS} pointerInit.c -o $@
+pointer_init.o: pointer_init.c
+		${CC} ${CFLAGS} pointer_init.c -o $@
 
-passByRef.o: passByRef.c
-		${CC} ${CFLAGS} passByRef.c -o $@
+pass_by_ref.o: pass_by_ref.c
+		${CC} ${CFLAGS} pass_by_ref.c -o $@
 
 #########
 # Use these as your Makefile options
 #########
-callStack: user.o callStack.o
-		${CC} user.o callStack.o -o $@
+call_stack: user.o call_stack.o
+		${CC} user.o call_stack.o -o $@
 
-memLeak: user.o memLeak.o
-		${CC} user.o memLeak.o -o $@
+mem_leak: user.o mem_leak.o
+		${CC} user.o mem_leak.o -o $@
 
-doubleFree: user.o doubleFree.o
-		${CC} user.o doubleFree.o -o $@
+double_free: user.o double_free.o
+		${CC} user.o double_free.o -o $@
 
-passByRef: user.o passByRef.o
-		${CC} user.o passByRef.o -o $@
+pass_by_ref: user.o pass_by_ref.o
+		${CC} user.o pass_by_ref.o -o $@
 
-pointerInit: user.o pointerInit.o
-		${CC} user.o pointerInit.o -o $@
+pointer_init: user.o pointer_init.o
+		${CC} user.o pointer_init.o -o $@
 
 clean:
 		rm *.o ${EXEC}

@@ -24,24 +24,24 @@ enum Permission {
 typedef struct UserPermissions {
 
     // notice that, like for structs, we need an enum keyword here
-    enum Permission readPermission;
-    enum Permission writePermission;
+    enum Permission read_permission;
+    enum Permission write_permission;
 } *UserPermissions;
 
 
 // construct a new user with userAge = -1, userName = NULL, permissions = NULL
-T User_newDefault();
+T User_new_default();
 
 // construct a new user with the given age, name, and permission levels
-T User_new(int userAge, char *userName, UserPermissions permissions);
+T User_new(int user_age, char *user_name, UserPermissions permissions);
 
 // check whether the user has certain permissions
-bool User_hasReadPermissionLevel(T user, enum Permission permissionLevel);
-bool User_hasWritePermissionLevel(T user, enum Permission permissionLevel);
+bool User_has_read_permission_level(T user, enum Permission permission_level);
+bool User_has_write_permission_level(T user, enum Permission permission_level);
 
 // get the user's name, or get a fully writable version of the user's name
-char *User_getName(T user);
-char **User_getNameWritable(T user);
+char *User_get_name(T user);
+char **User_get_name_writable(T user);
 
 // frees the overall User_T object along with the name and permissions
 void User_free(T *user);

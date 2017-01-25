@@ -21,10 +21,10 @@ char *prompt(char *message)
     return response;
 }
 
-void setUserName(User_T user, char *name)
+void set_user_name(User_T user, char *name)
 {
-    char **userExistingName = User_getNameWritable(user);
-    *userExistingName = name;
+    char **user_existing_name = User_get_name_writable(user);
+    *user_existing_name = name;
 }
 
 int main(void)
@@ -32,7 +32,7 @@ int main(void)
     while (true)
     {
         // includes newline
-        User_T user = User_newDefault();
+        User_T user = User_new_default();
         char *response = prompt("Create new user? ");
         free(response);
 
@@ -42,8 +42,8 @@ int main(void)
         }
 
         char *name = prompt("Set the user's name: ");
-        setUserName(user, name);
-        fprintf(stdout, "User name: %s\n", User_getName(user));
+        set_user_name(user, name);
+        fprintf(stdout, "User name: %s\n", User_get_name(user));
         User_free(&user);
     }
     return 0;

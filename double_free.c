@@ -21,11 +21,11 @@ char *prompt(char *message)
     return response;
 }
 
-User_T createAdminWithName(char *name)
+User_T create_admin_with_name(char *name)
 {
     UserPermissions permissions = malloc(sizeof(struct UserPermissions));
-    permissions->readPermission = ADMIN;
-    permissions->writePermission = ADMIN;
+    permissions->read_permission = ADMIN;
+    permissions->write_permission = ADMIN;
 
     return User_new(20, name, permissions);
 }
@@ -35,12 +35,12 @@ int main(void)
 {
     // prompt() allocates enough space for the input
     // this space must be freed later
-    char *userName = prompt("User name: ");
+    char *user_name = prompt("User name: ");
 
-    User_T admin = createAdminWithName(userName);
+    User_T admin = create_admin_with_name(user_name);
 
     // free the space we created from prompt()
-    free(userName);
+    free(user_name);
 
     User_free(&admin);
     return 0;
