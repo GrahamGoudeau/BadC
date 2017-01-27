@@ -1,3 +1,7 @@
+/*
+ * Author: Graham Goudeau
+ * Date Created: Jan 2017
+ */
 #ifndef USER_H
 #define USER_H
 

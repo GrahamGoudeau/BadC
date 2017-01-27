@@ -1,3 +1,7 @@
+/*
+ * Author: Graham Goudeau
+ * Date Created: Jan 2017
+ */
 #include "user.h"
 #include <stdio.h>
 #include <stdlib.h>

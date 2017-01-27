@@ -1,3 +1,6 @@
+# Author: Graham Goudeau
+# Date Created: Jan 2017
+
 # It is not necessary to use the Makefile rules that end in .o
 # You should use the names that follow those rules, so an example
 # make invocation could be `make call_stack` or `make double_free`.
